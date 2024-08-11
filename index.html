@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Pool Tracker</title>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css" crossorigin="anonymous" referrerpolicy="no-referrer" />
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <div class="container">
+    <h1>Pool Tracker</h1>
+	<h3>Track your game at shot level</h3>
+	
+    <div class="buttons">
+	  <div> Game name: <input id="game-name"></input></div>
+      <div class="pool-button" data-pool="miss"><i class="fas fa-sad-tear"></i> Miss</div>
+      <div class="pool-button" data-pool="pocket"><i class="fas fa-smile"></i> Pocket</div>
+    </div>
+    <canvas id="pool-chart"></canvas>
+    <div class="today-pools">
+      <h2>Today's Game</h2>
+      <table id="today-pools-table">
+        <thead>
+          <tr>
+            <th>Game Name</th>
+            <th>Miss</th>
+            <th>Delete Miss</th>
+            <th>Pocket</th>
+            <th>Delete Pocket</th>
+
+          </tr>
+        </thead>
+        <tbody id="today-pools-body">
+        </tbody>
+      </table>
+    </div>
+  </div>
+  <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+  <script src="script.js"></script>
+</body>
+</html>

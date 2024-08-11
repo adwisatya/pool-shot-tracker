@@ -1,0 +1,97 @@
+/* styles.css */
+
+body {
+  font-family: Arial, sans-serif;
+}
+
+.container {
+  max-width: 800px;
+  margin: 0 auto;
+  padding: 20px;
+}
+
+h1,h2,h3 {
+  text-align: center;
+}
+
+.buttons {
+  text-align: center;
+  margin-bottom: 20px;
+}
+
+.pool-button {
+  display: inline-block;
+  padding: 10px;
+  margin: 5px;
+  cursor: pointer;
+  border: none;
+  background-color: transparent;
+}
+
+.pool-button i {
+  font-size: 32px;
+  
+}
+
+/* Additional styles to differentiate pool button colors */
+.pool-button[data-pool="angry"] i {
+  color: #ff5733; /* Red color for angry pool */
+}
+
+.pool-button[data-pool="sad"] i {
+  color: #6495ed; /* Blue color for sad pool */
+}
+
+.pool-button[data-pool="anxiety"] i {
+  color: #ffa500; /* Orange color for anxiety pool */
+}
+
+.pool-button[data-pool="happy"] i {
+  color: #ffd700; /* Yellow color for happy pool */
+}
+
+.pool-button[data-pool="melancholy"] i {
+  color: #6c757d; /* Gray color for melancholy pool */
+}
+.pool-button i {
+  font-size: 32px;
+}
+
+.pool-button:hover {
+  color: #007bff;
+}
+
+canvas {
+  display: block;
+  margin: 0 auto;
+  max-width: 100%;
+}
+
+.today-pools {
+  margin-top: 20px;
+}
+
+.today-pools h2 {
+  text-align: center;
+}
+
+#today-pools-table {
+  width: 100%;
+  border-collapse: collapse;
+}
+
+#today-pools-table th,
+#today-pools-table td {
+  border: 1px solid #ddd;
+  padding: 8px;
+  text-align: left;
+}
+
+#today-pools-table th {
+  background-color: #f2f2f2;
+}
+
+.delete-btn {
+  cursor: pointer;
+  color: red;
+}
