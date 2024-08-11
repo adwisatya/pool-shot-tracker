@@ -34,19 +34,16 @@ h1,h2,h3 {
 }
 
 /* Additional styles to differentiate pool button colors */
-.pool-button[data-pool="angry"] i {
-  color: #ff5733; /* Red color for angry pool */
-}
 
-.pool-button[data-pool="sad"] i {
+.pool-button[data-pool="miss"] i {
   color: #6495ed; /* Blue color for sad pool */
 }
 
-.pool-button[data-pool="anxiety"] i {
-  color: #ffa500; /* Orange color for anxiety pool */
+.pool-button[data-pool="foul"] i {
+  color: #a87532; /* Orange color for anxiety pool */
 }
 
-.pool-button[data-pool="happy"] i {
+.pool-button[data-pool="pocket"] i {
   color: #ffd700; /* Yellow color for happy pool */
 }
 

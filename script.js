@@ -37,6 +37,8 @@ document.addEventListener('DOMContentLoaded', function () {
 	var total = {}
 	total['pocket'] = 0
 	total['miss'] = 0
+	total['foul'] = 0
+
     for (const date of dates) {
       labels.push(date);
       const data = poolData[date];
@@ -47,7 +49,7 @@ document.addEventListener('DOMContentLoaded', function () {
 			total[emotion] += data[game][emotion]
 		  }
       }
-	  for (const emotion of ['pocket','miss']) {
+	  for (const emotion of ['pocket','miss','foul']) {
 		  datasets.push({
 			label: emotion,
 			data: [total[emotion]],
@@ -94,6 +96,8 @@ document.addEventListener('DOMContentLoaded', function () {
 			  <td><span class="delete-btn" data-pool="miss" data-game="${game}">&times;</span></td>
 			  <td>${todaypools[game]["pocket"]}</td>
 			  <td><span class="delete-btn" data-pool="pocket" data-game="${game}">&times;</span></td>  
+			  <td>${todaypools[game]["foul"]}</td>
+			  <td><span class="delete-btn" data-pool="foul" data-game="${game}">&times;</span></td>  
 			`;
 			todaypoolsBody.appendChild(row);
       });
@@ -114,7 +118,7 @@ function addDeleteEventListeners() {
         } else {
           delete poolData[today][gameName][pool];
         }
-		if ((poolData[today][gameName]["pocket"] == undefined) && (poolData[today][gameName]["miss"] ==undefined)){
+		if ((poolData[today][gameName]["pocket"] == undefined) && (poolData[today][gameName]["miss"] ==undefined) && (poolData[today][gameName]["foul"] ==undefined)){
 			delete poolData[today][gameName];
 		}
         localStorage.setItem('poolData', JSON.stringify(poolData));
@@ -132,6 +136,8 @@ function addDeleteEventListeners() {
 		  return '#6495ed';
 		case 'pocket':
 		  return '#ffd700';
+		case 'foul':
+		  return '#a87532';
 		default:
 		  return '#000'; // Default color if pool doesn't match
 	  }

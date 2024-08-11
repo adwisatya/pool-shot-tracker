@@ -13,9 +13,26 @@
 	<h3>Track your game at shot level</h3>
 	
     <div class="buttons">
-	  <div> Game name: <input id="game-name"></input></div>
-      <div class="pool-button" data-pool="miss"><i class="fas fa-sad-tear"></i> Miss</div>
-      <div class="pool-button" data-pool="pocket"><i class="fas fa-smile"></i> Pocket</div>
+	  <table id="today-pools-table">
+	  <tr>
+		<td colspan="3">
+			<center>
+				<div> Game name: <input id="game-name"></input></div>
+			</center>
+		</td>
+	  </tr>
+	  <tr>
+		<td>
+			<div class="pool-button" data-pool="miss"><i class="fas fa-sad-tear"></i> Miss</div>
+		</td>
+		<td>
+			<div class="pool-button" data-pool="pocket"><i class="fas fa-smile"></i> Pocket</div>
+		</td>
+		<td>
+			<div class="pool-button" data-pool="foul"><i class="fas fa-sad-tear"></i> Foul</div>
+		</td>
+	  </tr>
+	  </table>
     </div>
     <canvas id="pool-chart"></canvas>
     <div class="today-pools">
@@ -28,7 +45,8 @@
             <th>Delete Miss</th>
             <th>Pocket</th>
             <th>Delete Pocket</th>
-
+            <th>Foul</th>
+            <th>Delete Foul</th>
           </tr>
         </thead>
         <tbody id="today-pools-body">
