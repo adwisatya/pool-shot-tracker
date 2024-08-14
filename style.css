@@ -72,6 +72,14 @@ canvas {
   text-align: center;
 }
 
+.today-pools {
+  margin-top: 20px;
+}
+
+.today-pools h2 {
+  text-align: center;
+}
+
 #today-pools-table {
   width: 100%;
   border-collapse: collapse;
@@ -88,6 +96,26 @@ canvas {
   background-color: #f2f2f2;
 }
 
+#today-pools-table {
+  width: 100%;
+  border-collapse: collapse;
+}
+
+#history-pools-table th,
+#history-pools-table td {
+  border: 1px solid #ddd;
+  padding: 8px;
+  text-align: left;
+}
+
+#history-pools-table th {
+  background-color: #f2f2f2;
+}
+
+#history-pools-table {
+  width: 100%;
+  border-collapse: collapse;
+}
 .delete-btn {
   cursor: pointer;
   color: red;

@@ -3,6 +3,8 @@ document.addEventListener('DOMContentLoaded', function () {
   const poolButtons = document.querySelectorAll('.pool-button');
   const poolChartCanvas = document.getElementById('pool-chart');
   const todaypoolsBody = document.getElementById('today-pools-body');
+  const historypoolsBody = document.getElementById('history-pools-body');
+
   let poolData = JSON.parse(localStorage.getItem('poolData')) || {};
 
   poolButtons.forEach(button => {
@@ -35,28 +37,35 @@ document.addEventListener('DOMContentLoaded', function () {
     const datasets = [];
     const dates = Object.keys(poolData).slice(-30);
 	var total = {}
-	total['pocket'] = 0
-	total['miss'] = 0
-	total['foul'] = 0
+	total['pocket'] = []
+	total['miss'] = []
+	total['foul'] = []
 
     for (const date of dates) {
+	  counter = {}
+	  counter['pocket'] = 0
+	  counter['miss'] = 0
+	  counter['foul'] = 0
       labels.push(date);
       const data = poolData[date];
 	  const games = Object.keys(data)
       for (const game of games) {
 		  const emotions = Object.keys(data[game]);
 		  for (const emotion of emotions) {
-			total[emotion] += data[game][emotion]
+			counter[emotion] += data[game][emotion]
 		  }
       }
 	  for (const emotion of ['pocket','miss','foul']) {
-		  datasets.push({
-			label: emotion,
-			data: [total[emotion]],
-			backgroundColor: getBackgroundColor(emotion),
-		  });
+		total[emotion].push(counter[emotion])
 	  }
     }
+	for (const emotion of ['pocket','miss','foul']) {
+	  datasets.push({
+		label: emotion,
+		data: total[emotion],
+		backgroundColor: getBackgroundColor(emotion),
+	  });
+	}
     const ctx = poolChartCanvas.getContext('2d');
 
     if (window.poolChart instanceof Chart) {
@@ -85,6 +94,7 @@ document.addEventListener('DOMContentLoaded', function () {
 
   function updateTodaypoolsTable() {
     todaypoolsBody.innerHTML = '';
+	historypoolsBody.innerHTML = '';
     const today = new Date().toISOString().split('T')[0];
     const todaypools = poolData[today];
     if (todaypools) {
@@ -102,6 +112,23 @@ document.addEventListener('DOMContentLoaded', function () {
 			todaypoolsBody.appendChild(row);
       });
     }
+	
+	for (const hdate of Object.keys(poolData)){
+		if (hdate != today) {
+			historyData = poolData[hdate];
+			Object.keys(historyData).forEach(game => {
+					const row = document.createElement('tr');
+					row.innerHTML = `
+					  <td>${hdate}</td>
+					  <td>${game}</td>
+					  <td>${historyData[game]["miss"]}</td>
+					  <td>${historyData[game]["pocket"]}</td>
+					  <td>${historyData[game]["foul"]}</td>
+					`;
+					historypoolsBody.appendChild(row);
+			  });
+		}
+	}
     addDeleteEventListeners();
   }
 
